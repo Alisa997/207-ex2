@@ -29,7 +29,7 @@ public class DogApiBreedFetcher implements BreedFetcher {
         List<String> subBreeds = new ArrayList<>();
 
         final Request request = new Request.Builder()
-                .url("https://dog.ceo/api/breed/" + breed + "/list")
+                .url("https://dog.ceo/api/breed/" + breed.toLowerCase().trim() + "/list")
                 .build();
 
 
