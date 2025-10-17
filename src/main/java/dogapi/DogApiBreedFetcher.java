@@ -43,13 +43,13 @@ public class DogApiBreedFetcher implements BreedFetcher {
                     subBreeds.add(breedsArray.getString(i));
                 }
             } else if (responseBody.getString("message").contains("Breed not found")) {
-                throw new BreedNotFoundException("Breed not found: " + breed);
+                throw new BreedNotFoundException(breed);
             } else {
                 throw new RuntimeException("API error: " + responseBody.getString("message"));
             }
         }
         catch (IOException | JSONException event) {
-            throw new RuntimeException(event);
+            throw new BreedNotFoundException(breed);
         }
 
         return subBreeds;
